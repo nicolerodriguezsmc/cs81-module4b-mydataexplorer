@@ -51,3 +51,73 @@ function findBestFocusDay(weekData) {
   }
   return dayWithHighestFocus;
 }
+
+// Function to calculate average sleep
+function averageSleep(weekData) {
+
+  let totalSleep = 0;
+
+  for (let day of weekData) {
+    totalSleep += day.sleepHours; //Add sleep hours to the total
+  }
+  return totalSleep / weekData.length; //Return the average sleep hours
+}
+
+// Function to find the most frequent mood
+function mostFrequentMood(weekData) {
+
+  let moodCount = {};
+  let mostFrequent = "";
+  let highestCount = 0;
+
+  for (let day of weekData) {
+    if (moodCount[day.mood]) {
+      moodCount[day.mood] += 1; //Add to the count if the mood exists
+    } else {
+      moodCount[day.mood] = 1; //Add a new mood if the mood does not already exist
+    }
+  }
+
+  // Find the mood with the highest count
+  for (let mood in moodCount) {
+    if (moodCount[mood] > highestCount) {
+      mostFrequent = mood; //Update the most frequent mood
+      highestCount = moodCount[mood]; //Update the highest mood count
+    }
+  }
+  return mostFrequent;
+}
+
+// Function to correlate caffeine intake to focus level
+function correlateCaffeineToFocus(weekData) {
+  let highestFocusDay = { day: "", focusLevel: 0, caffeineIntake: 0 };
+  let highestCaffeineDay = { day: "", focusLevel: 0, caffeineIntake: 0 };
+
+
+  for (let day of weekData) {
+    // Check for highest focus level
+    if (day.focusLevel > highestFocusDay.focusLevel) {
+      highestFocusDay = day; //Update the day with the highest focus level
+    }
+
+
+    if (day.caffeineIntake > highestCaffeineDay.caffeineIntake) {
+      highestCaffeineDay = day;  //Update the day with the highest caffeine level
+    }
+  }
+
+  //Return True or False if the highest focus day is equal to the highest caffeine day
+  return highestFocusDay.day === highestCaffeineDay.day;
+}
+
+
+// Output the results
+console.log("Analyzing Nicole's Data Journal...");
+console.log("Most screen time:", findHighestScreenTime(weekData));
+console.log("Best focus day:", findBestFocusDay(weekData));
+console.log("Average sleep:", averageSleep(weekData), "hrs");
+console.log("Most frequent mood:", mostFrequentMood(weekData));
+console.log("Does more caffeine mean better focus?", correlateCaffeineToFocus(weekData) ? "Heck Yeah" : "Heck No");
+
+  return dayWithHighestFocus;
+}
