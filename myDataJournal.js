@@ -4,7 +4,6 @@
 * Module 4b Assignment
 * URL: https://github.com/nicolerodriguezsmc/cs81-module4b-mydataexplorer
 */
-
 // Weekly data journal
 let weekData = [
   { day: "Monday", sleepHours: 7, screenTime: 5, mood: "happy", caffeineIntake: 2, focusLevel: 7 },
@@ -22,3 +21,18 @@ let weekData = [
 // I predict I assume around 7.75 hours.
 // My most frequent mood will be happy.
 // At least for me, caffeine helps with focus.
+
+// Function to find the day with the highest screen time
+function findHighestScreenTime(weekData) {
+
+  let highestScreenTime = 0;
+  let dayWithHighestScreenTime = "";
+
+  for (let day of weekData) {
+    if (day.screenTime > highestScreenTime) {
+      highestScreenTime = day.screenTime; //Update the highest screen time
+      dayWithHighestScreenTime = day.day; //Update the day with the highest screen time
+    }
+  }
+  return dayWithHighestScreenTime;
+}
