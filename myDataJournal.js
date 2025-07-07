@@ -36,3 +36,18 @@ function findHighestScreenTime(weekData) {
   }
   return dayWithHighestScreenTime;
 }
+
+// Function to find the day with the best focus level
+function findBestFocusDay(weekData) {
+
+  let highestFocus = 0;
+  let dayWithHighestFocus = "";
+
+  for (let day of weekData) {
+    if (day.focusLevel > highestFocus) {
+      highestFocus = day.focusLevel; //Update the highest focus level
+      dayWithHighestFocus = day.day; //Update the day with the highest focus level
+    }
+  }
+  return dayWithHighestFocus;
+}
