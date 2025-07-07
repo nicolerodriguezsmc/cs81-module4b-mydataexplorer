@@ -20,4 +20,5 @@ let weekData = [
 // I think Wednesday will have the most screen time.
 // My best focus day will be Thursday.
 // I predict I assume around 7.75 hours.
-// At least for me, caffiene helps with focus.
+// My most frequent mood will be happy.
+// At least for me, caffeine helps with focus.
